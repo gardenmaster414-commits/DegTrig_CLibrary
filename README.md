@@ -5,11 +5,13 @@ DegTrig Team, 2026
 1. DegTrig (Degree Trigonometry Library) is a lightweight C library designed for when a project requires angles in degrees, rather than radians. 
 
 The standard C math library requires radians, which can complicate the logic of a program. DegTrig allows calculations directly
-using degrees. 
+using degrees, which is more human friendly. 
 
 
 
-2. DegTrig is useful for projects involving math, physics, simulations, game logic, and so on. The functions have simple names, and require simple arguments. It grants a function to turn radians into degrees, as well as degrees into radians. It features degree based sine, cosine, tangent, secant, cosecant, and cotangent calculations. As well as the inverse trigonometric functions of those 6, outputting degrees based on a ratio. It also includes triangle side conversions, 2D & 3D vector creation, and angle normalization. 
+2. DegTrig is useful for projects involving math, physics, simulations, game logic, and so on. The functions have simple names, and require simple arguments. It grants a function to turn radians into degrees, as well as degrees into radians. It features degree based sine, cosine, tangent, secant, cosecant, and cotangent calculations. As well as the inverse trigonometric functions of those 6, outputting degrees based on a ratio. It also includes triangle side conversions, 2D & 3D vector creation, and angle normalization.
+
+Save time and complexity by keeping your data in degree format, rather than having to manage math and conversions in your source code. Get more done, and make the data more human friendly for developers and end users.
 
 
 
@@ -20,11 +22,11 @@ using degrees.
 
 you need:
 -a C compiler (GCC, Clang, or another)
--Make
+-Make (optional)
 
-install by either downloading using a webrowser at https://github.com/yourname/DegTrig.git or cloning the repository with the BASH command:
+install by either downloading using a webrowser at https://github.com/yourname/DegTrig_CLibrary.git or cloning the repository with the BASH command:
 
-git clone https://github.com/yourname/DegTrig.git 
+git clone https://github.com/yourname/DegTrig_CLibrary.git 
 
 there should be a working Makefile in the DegTrig project folder. Create the library by changing to the DegTrig/ directory and entering the command: 
 
