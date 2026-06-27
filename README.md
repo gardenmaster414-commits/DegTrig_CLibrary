@@ -95,7 +95,7 @@ vector3d deg_vector3d(double length, double theta, double phi); //takes vector p
 
 double deg_normalize(double deg); //input an angle in degrees to normalize it (take an angle out of the bounds of 0-360 and translate it to an angle within the bounds of 0-360). *note: normalization is not required for the functions of DegTrig to work, but it does make angles easier for humans to read.
 
-=============================================================================================
+====================================================================
 
 
 
