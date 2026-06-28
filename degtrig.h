@@ -70,15 +70,15 @@ vector3ddt vector3ddt_from_xyz(double x, double y, double z);
 
 // Create vectors using length and angles
 
-vector2ddt vector2d_from_values(double length, double degrees);
+vector2ddt vector2ddt_from_values(double length, double degrees);
 
-vector3ddt vector3d_from_values(double length, double theta, double phi);
+vector3ddt vector3ddt_from_values(double length, double theta, double phi);
 
 
 //===========================================================
 // Vector comparison
 
-double deg_from_xy(double y1, double x1, double y2, double x2);
+double deg_from_xy(double x1, double y1, double x2, double y2);
 
 double endpoint_diff_vector2ddt(vector2ddt v1, vector2ddt v2);
 
@@ -95,23 +95,23 @@ double yaw_diff_vector3ddt(vector3ddt v1, vector3ddt v2);
 // Vector component calculations
 
 // 2D
-double deg_vectorX2(double length, double degrees);
+double deg_vectorX2d(double length, double degrees);
 
-double deg_vectorY2(double length, double degrees);
+double deg_vectorY2d(double length, double degrees);
 
 
 // 3D
-double deg_vectorX3(double length, double theta, double phi);
+double deg_vectorX3d(double length, double theta, double phi);
 
-double deg_vectorY3(double length, double phi);
+double deg_vectorY3d(double length, double phi);
 
-double deg_vectorZ3(double length, double theta, double phi);
+double deg_vectorZ3d(double length, double theta, double phi);
 
 
 //===========================================================
 // Vector angle extraction
 
-double deg_from_vector2d(vector2ddt v);
+double deg_from_vector2ddt(vector2ddt v);
 
 
 double deg_pitch_xyz(double x, double y, double z);

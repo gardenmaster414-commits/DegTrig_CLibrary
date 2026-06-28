@@ -175,20 +175,20 @@ vector3ddt vector3ddt_from_xyz(double x, double y, double z){
     return nv;
 }
 //makes vector coordinates, using length and theta in degrees
-vector2ddt vector2d_from_values(double length, double degrees){
+vector2ddt vector2ddt_from_values(double length, double degrees){
    vector2ddt v;
-    v.x = deg_vectorX2(length, degrees);
-    v.y = deg_vectorY2(length, degrees);
+    v.x = deg_vectorX2d(length, degrees);
+    v.y = deg_vectorY2d(length, degrees);
     return v;
 }
 
 //intakes the length, theta in degrees, and phi in degrees to make the coordinates of a 3d vector
-vector3ddt vector3d_from_values(double length, double theta, double phi){
+vector3ddt vector3ddt_from_values(double length, double theta, double phi){
    vector3ddt v;
 
-    v.x = deg_vectorX3(length, theta, phi);
-    v.y = deg_vectorY3(length, phi);
-    v.z = deg_vectorZ3(length, theta, phi);
+    v.x = deg_vectorX3d(length, theta, phi);
+    v.y = deg_vectorY3d(length, phi);
+    v.z = deg_vectorZ3d(length, theta, phi);
 
     return v;
 }
@@ -197,7 +197,7 @@ vector3ddt vector3d_from_values(double length, double theta, double phi){
 
 
 //input two coordinates to get the theta angle between them
-double deg_from_xy(double y1, double x1, double y2, double x2){
+double deg_from_xy(double x1, double y1, double x2, double y2){
     double diffx = x2 - x1;
     double diffy = y2 - y1;
     double result = (atan2(diffy, diffx) * getdeg);
@@ -224,8 +224,8 @@ double length_diff_vector2ddt(vector2ddt v1, vector2ddt v2){
 //finds the difference in angle of two degtrig vectors. 
 
 double deg_diff_vector2ddt(vector2ddt v1, vector2ddt v2){
-     double theta1 = deg_normalize(deg_from_vector2d(v1));
-    double theta2 = deg_normalize(deg_from_vector2d(v2));
+     double theta1 = deg_normalize(deg_from_vector2ddt(v1));
+    double theta2 = deg_normalize(deg_from_vector2ddt(v2));
 
     double diff = fabs(theta2 - theta1);
 
@@ -260,26 +260,26 @@ double yaw_diff_vector3ddt(vector3ddt v1, vector3ddt v2){
 //vector components-------------------------------------------------------
 
 //finds an polar X vector component (horizontal leg of the right triangle, where length is the hypotenuse)
-double deg_vectorX2(double length, double degrees){
+double deg_vectorX2d(double length, double degrees){
     return length * deg_cos(degrees);
 }
 //2D VERSION: finds a polar Y vector component (vertical leg of the right triangle, where length is the hypotenuse)
-double deg_vectorY2(double length, double degrees){
+double deg_vectorY2d(double length, double degrees){
     return length * deg_sin(degrees);
 }
 
 //3D VERSION - finds the polar x component, insert theta and phi in degrees
-double deg_vectorX3(double length, double theta, double phi){
+double deg_vectorX3d(double length, double theta, double phi){
     double horizontal = length * deg_cos(phi);
 
     return horizontal * deg_cos(theta);
 }
 //3D VERSION - finds a polar Y vector component, insert phi in degrees
-double deg_vectorY3(double length, double phi){
+double deg_vectorY3d(double length, double phi){
     return length * deg_sin(phi);
 }
 ////3D VERSION - finds the Z component of a vector using yaw(theta) and pitch(phi)
-double deg_vectorZ3(double length, double theta, double phi){
+double deg_vectorZ3d(double length, double theta, double phi){
     double horizontal = length * deg_cos(phi);
 
     return horizontal * deg_sin(theta);
@@ -287,7 +287,7 @@ double deg_vectorZ3(double length, double theta, double phi){
 
 
 //takes a 2D vector from a degtrigvector and gets the theta angle, in degrees
-double deg_from_vector2d(vector2ddt v){
+double deg_from_vector2ddt(vector2ddt v){
     double result = atan2(v.y, v.x) * getdeg;
     return deg_normalize(result);
 }
