@@ -1,82 +1,133 @@
 #ifndef DEGTRIG_H
 #define DEGTRIG_H
 
-#define DEGTRIG_VERSION "1.0.0"
+/*
+    DegTrig Library
+    Version: 1.2.0
+
+    Degree-based trigonometry and vector mathematics library.
+*/
 
 #include <math.h>
-#include <stdio.h>
 
-#define PI 3.141592653589
-#define getrad (PI / 180.0)
-#define getdeg (180.0 / PI)
 
-/* ==========================
-   Vector Structures
-   ========================== */
+//===========================================================
+// Vector structures
 
 typedef struct {
     double x;
     double y;
-} vector2d;
+} vector2ddt; //2d vector that can be used in degtrig functions
+
 
 typedef struct {
     double x;
     double y;
     double z;
-} vector3d;
+} vector3ddt; //3d vectors that can be used in degtrig functions
 
-/* ==========================
-   Unit Conversion
-   ========================== */
+
+//===========================================================
+// Unit conversion
 
 double find_radians(double degrees);
 double find_degrees(double radians);
 
-/* ==========================
-   Six Trigonometric Ratios
-   ========================== */
 
-double deg_tan(double deg);
+//===========================================================
+// 6 trig functions (degrees)
+
 double deg_sin(double deg);
 double deg_cos(double deg);
+double deg_tan(double deg);
+
 double deg_sec(double deg);
 double deg_cosec(double deg);
 double deg_cotan(double deg);
 
-/* ==========================
-   Inverse Trigonometric Functions
-   ========================== */
+
+//===========================================================
+// 6 inverse trig functions (returns degrees)
 
 double deg_atan(double x);
 double deg_asin(double x);
 double deg_acos(double x);
+
 double deg_asec(double x);
 double deg_acosec(double x);
 double deg_acotan(double x);
 
-/* ==========================
-   Side Length Functions
-   ========================== */
 
-double deg_opp(double hypotenuse, double theta);
-double deg_adj(double hypotenuse, double theta);
-double deg_hyp(double opp, double adj);
+//===========================================================
+// Vector creation
 
-/* ==========================
-   Vector Functions
-   ========================== */
+//Create vectors using coordinates
 
-double deg_vectorX(double length, double degrees);
-double deg_vectorY(double length, double degrees);
-double deg_vectorZ(double length, double phi);
+vector2ddt vector2ddt_from_xy(double x, double y);
 
-vector2d deg_vector2d(double length, double degrees);
-vector3d deg_vector3d(double length, double theta, double phi);
+vector3ddt vector3ddt_from_xyz(double x, double y, double z);
 
-/* ==========================
-   Utility Functions
-   ========================== */
+
+// Create vectors using length and angles
+
+vector2ddt vector2d_from_values(double length, double degrees);
+
+vector3ddt vector3d_from_values(double length, double theta, double phi);
+
+
+//===========================================================
+// Vector comparison
+
+double deg_from_xy(double y1, double x1, double y2, double x2);
+
+double endpoint_diff_vector2ddt(vector2ddt v1, vector2ddt v2);
+
+double length_diff_vector2ddt(vector2ddt v1, vector2ddt v2);
+
+double deg_diff_vector2ddt(vector2ddt v1, vector2ddt v2);
+
+double pitch_diff_vector3ddt(vector3ddt v1, vector3ddt v2);
+
+double yaw_diff_vector3ddt(vector3ddt v1, vector3ddt v2);
+
+
+//===========================================================
+// Vector component calculations
+
+// 2D
+double deg_vectorX2(double length, double degrees);
+
+double deg_vectorY2(double length, double degrees);
+
+
+// 3D
+double deg_vectorX3(double length, double theta, double phi);
+
+double deg_vectorY3(double length, double phi);
+
+double deg_vectorZ3(double length, double theta, double phi);
+
+
+//===========================================================
+// Vector angle extraction
+
+double deg_from_vector2d(vector2ddt v);
+
+
+double deg_pitch_xyz(double x, double y, double z);
+
+double deg_yaw_xyz(double x, double z);
+
+
+double deg_pitch_vector3ddt(vector3ddt v);
+
+double deg_yaw_vector3ddt(vector3ddt v);
+
+
+//===========================================================
+// Extra utilities
 
 double deg_normalize(double deg);
 
-#endif /* DEGTRIG_H */
+
+#endif

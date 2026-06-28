@@ -1,6 +1,7 @@
 #include <math.h>
 #include "degtrig.h"
 #include <stdbool.h>
+#include <stdio.h>
 
 int main(){
     double radians;

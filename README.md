@@ -2,27 +2,33 @@ DegTrig Team, 2026
 
 
 
-1. DegTrig (Degree Trigonometry Library) is a lightweight C library designed for when a project requires angles in degrees, rather than radians. 
+1. # About
+
+DegTrig (Degree Trigonometry Library) is a lightweight C library designed for when a project requires angles in degrees, rather than radians. 
 
 The standard C math library requires radians, which can complicate the logic of a program. DegTrig allows calculations directly
 using degrees, which is more human friendly. 
 
 
 
-2. DegTrig is useful for projects involving math, physics, simulations, game logic, and so on. The functions have simple names, and require simple arguments. It grants a function to turn radians into degrees, as well as degrees into radians. It features degree based sine, cosine, tangent, secant, cosecant, and cotangent calculations. As well as the inverse trigonometric functions of those 6, outputting degrees based on a ratio. It also includes triangle side conversions, 2D & 3D vector creation, and angle normalization.
+2. # Uses
+
+ DegTrig is useful for projects involving math, physics, simulations, game logic, and so on. The functions have simple names, and require simple arguments. It grants a function to turn radians into degrees, as well as degrees into radians. It features degree based sine, cosine, tangent, secant, cosecant, and cotangent calculations. As well as the inverse trigonometric functions of those 6, outputting degrees based on a ratio. It also includes triangle side conversions, 2D & 3D vector creation, and angle normalization.
 
 Save time and complexity by keeping your data in degree format, rather than having to manage math and conversions in your source code. Get more done, and make the data more human friendly for developers and end users.
 
 
 
 
-3. ##Buiding from source
+3. # Buiding from source
 
-##Requirements
+# Requirements
 
 you need:
 -a C compiler (GCC, Clang, or another)
 -Make (optional)
+
+# guide
 
 install by either downloading using a webrowser at https://github.com/yourname/DegTrig_CLibrary.git or cloning the repository with the BASH command:
 
@@ -48,54 +54,112 @@ Now you have the library.
 4. To use DegTrig, include it with your other header files with the name <degtrig.h> 
 use its functions like any other header program. All functions return double float values and expect float values in their function arguments, so prepare your variables accordingly, and dont forget the %lf format specifier when working with double floats. 
 
+I reccoment placing libdegtrig.a and degtrig.h in the same folder as your source code, so you do not need to write out the entire path when compiling. If the header is in the same folder as the source code, write "degtrig.h" instead of <degtrig.h> in the .c file because the "" tells the compiler to look in the current directory. make sure to write 
+-L. -ldegtrig 
+when compiling if you are putting the library and .h file in the same folder as your project. 
+
 5. DegTrig contains structs and functions. The two new structs are vector2d and vector3d, the names are self explanatory: vector2d holds x,y coordinates, while vector3d holds x,y,z coordinates. 
 
-The following is the list of functions included in the current release of degtrig.h in the style of 
-returntype function_name(inputtype input);
+The following is the list of functions included in the current release of degtrig.h in the style of:
+
+returntype function_name(inputtype input); // Description
 
 ====================================================================
 
-double find_radians(double degrees); //input degrees to get radians.
-double find_degrees(double radians); //input radians to get degrees.
+# Functions
 
-double deg_tan(double deg); //similar to tan() from math.h, but accepts the angle in degrees. 
+## Unit Conversion
 
-double deg_sin(double deg); //get sine from degrees.
+double find_radians(double degrees); // Converts degrees into radians
 
-double deg_cos(double deg); //get cosine from degrees.
-
-double deg_sec(double deg); //get secant from degrees.
-
-double deg_cosec(double deg); //get cosecant from degrees.
-
-double deg_cotan(double deg); //get cotangent from degrees.
+double find_degrees(double radians); // Converts radians into degrees
 
 
-double deg_atan(double x); //similair to atan() from math.h, but converts the ratio to degrees instead
+# Trigonometric Functions
 
-double deg_asin(double x); //input the sine ratio to inverse and get the angle in degrees
+double deg_sin(double deg); // Calculates sine using degrees
 
-double deg_acos(double x); //degrees from cosine ratio
+double deg_cos(double deg); // Calculates cosine using degrees
 
-double deg_asec(double x); //degrees from secant ratio
+double deg_tan(double deg); // Calculates tangent using degrees. Returns NAN if undefined
 
-double deg_acosec(double x); //degrees from cosecant ratio
+double deg_sec(double deg); // Calculates secant using degrees. Returns NAN if undefined
 
-double deg_acotan(double x); //degrees from cotangent ratio
+double deg_cosec(double deg); // Calculates cosecant using degrees. Returns NAN if undefined
 
-
-double deg_vectorX(double length, double degrees); //takes the length/magnitude and theta angle of a vector to give x-axis value
-
-double deg_vectorY(double length, double degrees); //takes the length/magnitude and theta angle of a vector to give y-axis value
-
-double deg_vectorZ(double length, double phi); //takes the length and phi angle of a vector to give z-axis value
+double deg_cotan(double deg); // Calculates cotangent using degrees. Returns NAN if undefined
 
 
-vector2d deg_vector2d(double length, double degrees); //takes vector parameters to make 2D vector
+# Inverse Trigonometric Functions
 
-vector3d deg_vector3d(double length, double theta, double phi); //takes vector parameters to make a 3D vector
+double deg_atan(double x); // Calculates inverse tangent and returns degrees
 
-double deg_normalize(double deg); //input an angle in degrees to normalize it (take an angle out of the bounds of 0-360 and translate it to an angle within the bounds of 0-360). *note: normalization is not required for the functions of DegTrig to work, but it does make angles easier for humans to read.
+double deg_asin(double x); // Calculates inverse sine from a ratio and returns degrees. Returns NAN outside -1 to 1
+
+double deg_acos(double x); // Calculates inverse cosine from a ratio and returns degrees. Returns NAN outside -1 to 1
+
+double deg_asec(double x); // Calculates inverse secant from a ratio and returns degrees. Returns NAN when input is invalid
+
+double deg_acosec(double x); // Calculates inverse cosecant from a ratio and returns degrees. Returns NAN when input is invalid
+
+double deg_acotan(double x); // Calculates inverse cotangent from a ratio and returns degrees
+
+
+# Vector Creation
+
+vector2ddt vector2ddt_from_xy(double x, double y); // Creates a 2D vector from X and Y components. Useful for converting another 2D vector struct into a degtrig compatible vector.
+
+vector3ddt vector3ddt_from_xyz(double x, double y, double z); // Creates a 3D vector from X, Y, and Z components. Useful for converting another 3D vector struct into a degtrig compatible vector.
+
+vector2ddt vector2d_from_values(double length, double degrees); // Creates a 2D vector from magnitude and angle
+
+vector3ddt vector3d_from_values(double length, double theta, double phi); // Creates a 3D vector from spherical coordinates
+
+
+# Vector Comparison
+
+double deg_from_xy(double y1, double x1, double y2, double x2); // Finds the angle between two coordinate points
+
+double endpoint_diff_vector2ddt(vector2ddt v1, vector2ddt v2); // Finds the distance between the endpoints of two 2D vectors
+
+double length_diff_vector2ddt(vector2ddt v1, vector2ddt v2); // Finds the difference in magnitude between two 2D vectors
+
+double deg_diff_vector2ddt(vector2ddt v1, vector2ddt v2); // Finds the smallest angle difference between two 2D vectors
+
+double pitch_diff_vector3ddt(vector3ddt v1, vector3ddt v2); // Finds the difference between the pitch (vertical) angles of two 3D vectors
+
+double yaw_diff_vector3ddt(vector3ddt v1, vector3ddt v2); // Finds the difference between the yaw (horizontal) angles of two 3D vectors
+
+
+# Vector Components
+
+double deg_vectorX2(double length, double degrees); // Calculates the X component of a 2D vector
+
+double deg_vectorY2(double length, double degrees); // Calculates the Y component of a 2D vector
+
+double deg_vectorX3(double length, double theta, double phi); // Calculates the X component of a 3D vector
+
+double deg_vectorY3(double length, double phi); // Calculates the Y component of a 3D vector
+
+double deg_vectorZ3(double length, double theta, double phi); // Calculates the Z component of a 3D vector
+
+
+# Vector Angle Extraction
+
+double deg_from_vector2d(vector2ddt v); // Gets the angle of a 2D vector in degrees
+
+double deg_pitch_xyz(double x, double y, double z); // Calculates the pitch angle of a 3D coordinate
+
+double deg_yaw_xyz(double x, double z); // Calculates the yaw angle of a 3D coordinate
+
+double deg_pitch_vector3ddt(vector3ddt v); // Gets the pitch angle of a 3D vector
+
+double deg_yaw_vector3ddt(vector3ddt v); // Gets the yaw angle of a 3D vector
+
+
+# Extra Functions
+
+double deg_normalize(double deg); // Normalizes an angle into the range 0-360 degrees
 
 ====================================================================
 
